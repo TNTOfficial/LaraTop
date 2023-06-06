@@ -1,0 +1,35 @@
+@import url(../../node_modules/bootstrap/dist/css/bootstrap.min.css);
+/* bootstrap css */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+/* bootstrap Icon */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --theme-deafult: #7366ff;
+    --theme-hover: #5e50f7;
+    --view-border-marker: #cfcdfc;
+}
+
+
+.text-primary{
+    color: var(--theme-deafult);
+}
+.bg-primary{
+    background-color: var(--theme-deafult);
+}
+
+.btn{
+    background-color: var(--theme-deafult);
+    border-color: var(--view-border-marker);
+    color: white;
+}
+
+.btn:hover{
+    background-color: var(--theme-hover);
+    box-shadow: 5px 5px 10px var(--view-border-marker);
+}
