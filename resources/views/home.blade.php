@@ -73,19 +73,23 @@
 
         <section class="about-section">
             <div class="container">
-                <div class="row g-3 align-items-center">
+                <div class="row g-3">
                     <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">
                         <div class="inner-column">
                             <div class="sec-title">
-                                <span class="title fw-bold py-2">About Css3transition</span>
-                                <h2>We are Creative Tech Enthusiast working since 2015</h2>
+                                <span class="title fw-bold py-2 fs-3">About TopnTech</span>
+                                <h2 class="pt-3">We are Creative Tech Enthusiast working since 2015</h2>
                             </div>
-                            <div class="text">I am Rahul Yaduvanshi works at Css3 Transition since last 3 years. We are here to provide touch notch solution for your website or web application that helps you to make your website look attractive & efficient in handling by creating usefull plugins thats you need.</div>
-                            <div class="text">
-                                We are here to serve you next level tutorial that currently in trend to match you with your expertise. Css3 transition is a learning website. where you can find many good quality content related to web development and tutorials about plugins. here we are using html, html5, css, css3, jquery & javascript along with inspirational UI design layout by professionals by using Photoshop and adobe allustrator.
-                            </div>
-                            <div class="btn-box">
-                                <a href="#" class="theme-btn btn-style-one text-decoration-none fs-4 my-3">Contact Us</a>
+                            <div class="text py-3">
+                                <p> TopNTech is a cutting-edge technology company at the forefront of innovation and advancement. With a relentless passion for technology and a commitment to delivering exceptional solutions, TopNTech has established itself as a leader in the industry.
+
+                                    At TopNTech, we believe that technology has the power to shape the future and revolutionize the way we live, work, and interact. We constantly strive to push the boundaries of what is possible, leveraging the latest advancements in artificial intelligence, machine learning, robotics, and data analytics to develop groundbreaking solutions.
+                                </p>
+                                <p> Our team of talented developers and technologists are the driving force behind our success. With their deep expertise and diverse skill sets, they consistently deliver cutting-edge products and services that exceed customer expectations. Whether it's developing innovative software applications, designing state-of-the-art hardware devices, or creating intelligent systems, our team is dedicated to turning ideas into reality.
+
+                                    One of the core principles that sets TopNTech apart is our unwavering commitment to quality and customer satisfaction. We prioritize understanding our clients' needs and strive to provide tailored solutions that address their unique challenges. Through collaborative partnerships, we work closely with our clients to ensure that our technology aligns with their goals and objectives, resulting in transformative outcomes.
+                                </p>
+                            
                             </div>
                         </div>
                     </div>
@@ -97,32 +101,13 @@
                                 <h2>Gurwinder Singh</h2>
                                 <span class="fw-bold py-4">Web Developer</span>
                             </div>
-                            <figure class="image-1"><a href="#" class="lightbox-image" data-fancybox="images"><img title="Rahul Kumar Yadav" src="https://i.ibb.co/QP6Nmpf/image-1-about.jpg" alt=""></a></figure>
+                            <figure class="image-1"><a href="#" class="lightbox-image" data-fancybox="images">
+                                    <img src="../assets/images/abc.jpg" alt="" class="w-100 my-2 my-md-5"></a></figure>
 
                         </div>
                     </div>
 
                 </div>
-                <!-- <div class="sec-title">
-                    <span class="title">Our Future Goal</span>
-                    <h2>We want to lead in innovation & Technology</h2>
-                </div>
-                <div class="text">
-                    We works on UI/UX and functionality as well so that a plugins comes with proper stucture & stunning looks which suits to your web app & website.
-                </div>
-                <div class="text">
-                    We take a small toolkit here and ride it well so that it is fit for your use. One who performs well and looks even better.
-                </div>
-                <div class="text">
-                    Here we are trying to give you all kinds of technical content, whether it is related to designing or functionality. We are creating content on a lot of languages and will continue to make it free of cost even if you use it without any problem. Which is a very important thing.
-                </div>
-                <div class="text">
-                    Here you can also share the content you create, if our technical team likes it, then we will also share it on our blog.
-                </div>
-                <div class="text">
-
-                    In the end, I would say keep visiting our website and enjoy the quality content.
-                </div> -->
             </div>
         </section>
 
