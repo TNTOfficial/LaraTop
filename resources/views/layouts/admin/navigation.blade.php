@@ -1,3 +1,8 @@
+
+@php
+    $userProfile = Auth::user()->userProfile;
+@endphp
+
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-around">
         <div>
@@ -22,7 +27,6 @@
                     </div>
                 </a>
                 <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <a class="dropdown-item" href="route('logout')" onclick="event.preventDefault();

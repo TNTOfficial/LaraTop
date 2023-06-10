@@ -37,7 +37,6 @@
                         <thead>
                             <tr class="border-bottom-primary">
                                 <th>S.No.</th>
-                                <th>Name</th>
                                 <th>Image</th>
                                 <th>Actions</th>
                             </tr>
@@ -46,7 +45,6 @@
                             @foreach($images as $item)
                             <tr class="border-bottom-secondary">
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <th scope="row">{{$item->name}}</th>
                                 <td> <img src="{{ asset('/storage/gallery/' . $item->img) }}" alt="profile" class="rounded" style="height:120px; width:120px;object-fit:cover;"></td>
                                 <td>
                                     <ul class="action d-flex align-items-center list-unstyled m-0 justify-content-center">

@@ -102,7 +102,7 @@
                                 <span class="fw-bold py-4">Web Developer</span>
                             </div>
                             <figure class="image-1"><a href="#" class="lightbox-image" data-fancybox="images">
-                                    <img src="../assets/images/abc.jpg" alt="" class="w-100 my-2 my-md-5"></a></figure>
+                                    <img src="../images/abc.jpg" alt="" class="w-100 my-2 my-md-5"></a></figure>
 
                         </div>
                     </div>

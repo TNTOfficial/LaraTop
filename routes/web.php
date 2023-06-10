@@ -14,7 +14,12 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Frontend\BlogsController;
 use App\Http\Controllers\UserProfileController;
+
+
+
+use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Contracts\Permission;
 
 use function Pest\Laravel\delete;
 
@@ -65,8 +70,7 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role:Admin'])->group(fu
     Route::get('/emails/{id}', [ContactUsController::class, 'showEmail'])->name('emails.show');
     Route::put('/emails/{id}/mark-as-read', [ContactUsController::class, 'markAsRead'])->name('emails.markAsRead');
     Route::delete('/emails/{id}', [ContactUsController::class, 'destroy'])->name('emails.delete');
-    Route::post('/gallery/images', [GalleryController::class, 'getImages'])->name('gallery.images');
-    Route::post('/upload-image', [GalleryController::class, 'uploadImage'])->name('uploadImage');
+    Route::post('gallery/uploadImage', [GalleryController::class, 'uploadImage'])->name('gallery.uploadImage');
     Route::resource('gallery', GalleryController::class);
     Route::resource('blogs', BlogController::class);
     Route::post('/roles/{role}/assign', [RoleController::class, 'assignRole'])->name('roles.assign');
@@ -76,11 +80,12 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role:Admin'])->group(fu
     Route::post('/permissions', [PermissionController::class, 'store'])->name('permissions.store');
     Route::resource('permissions', PermissionController::class);
 });
+
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/user/profile/edit', [UserProfileController::class, 'edit'])->name('user_profile.edit');
     Route::patch('/user/profile/update', [UserProfileController::class, 'update'])->name('user_profile.update');
 });
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
