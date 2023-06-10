@@ -1,2 +1,2 @@
-# LaraTop
-A laravel admin  panel with integrated basic features for everyday use 
+# laraveladmin
+Laravel admin with common functionality

@@ -1,20 +1,21 @@
 <nav class="sidebar sidebar-offcanvas h-100" style="overflow-x:hidden; overflow-y:auto;" id="sidebar">
     <ul class="nav">
+
         <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
-                <div class="d-flex align-items-center">
-                    <div class="nav-profile-image">
-                        <img src="{{asset('assets/images/faces/face1.jpg')}}" alt="profile">
-                        <span class="login-status online"></span>
-                    </div>
-                    <div class="nav-profile-text d-flex flex-column">
-                        <span class="font-weight-bold mb-2">{{ Auth::user()->name }}</span>
-                        <span class="text-secondary text-small">Project Manager</span>
-                    </div>
-                    <x-dropdown-link :href="route('user_profile.edit')" class="fa-solid fa-user-pen text-decoration-none fs-6 nav-profile-badge" style="color: #beabc2;">
-                        {{ __('') }}
-                    </x-dropdown-link>
+               <div class="d-flex align-items-center">
+               <div class="nav-profile-image">
+                    <img src="{{asset('assets/images/faces/face1.jpg')}}" alt="profile">
+                    <span class="login-status online"></span>
                 </div>
+                <div class="nav-profile-text d-flex flex-column">
+                    <span class="font-weight-bold mb-2">{{ Auth::user()->name }}</span>
+                    <span class="text-secondary text-small">Project Manager</span>
+                </div>
+                <x-dropdown-link :href="route('user_profile.edit')" class="fa-solid fa-user-pen text-decoration-none fs-6 nav-profile-badge" style="color: #beabc2;">
+                    {{ __('') }}
+                </x-dropdown-link>
+               </div>
             </a>
         </li>
 

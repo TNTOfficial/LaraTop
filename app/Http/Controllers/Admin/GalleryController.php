@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\gallery;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
@@ -27,10 +27,11 @@ class GalleryController extends Controller
         return view('dashboard/gallery/create');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function uploadImage(Request $request)
     {
-        $imageNames = $request->input('image_names');
-
         $image = $request->file('file');
         $fileInfo = $image->getClientOriginalName();
         $filename = pathinfo($fileInfo, PATHINFO_FILENAME);
@@ -43,14 +44,11 @@ class GalleryController extends Controller
         );
 
         $imageUpload = new Gallery;
-
-        $imageUpload->name = $imageNames[0] ?? $fileInfo;
+        $imageUpload->name = $fileInfo;
         $imageUpload->image = $file_name;
         $imageUpload->save();
-
         return response()->json(['success' => $file_name]);
     }
-
 
     /**
      * Display the specified resource.
@@ -69,18 +67,15 @@ class GalleryController extends Controller
         return view('dashboard/gallery/edit', ['item' => $item]);
     }
 
-
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, string $id)
     {
         $item = Gallery::find($id);
 
         if ($item) {
             $updateData = [];
-
-            if ($request->filled('image_names')) {
-                $imageName = $request->input('image_names')[0];
-                $updateData['name'] = $imageName;
-            }
 
             if ($request->filled('croppedImage')) {
                 $extension = explode('/', mime_content_type($request->croppedImage))[1];
@@ -100,11 +95,6 @@ class GalleryController extends Controller
         return redirect()->route('gallery.index');
     }
 
-    public function getImages()
-    {
-        $images = Gallery::select('name', 'size', 'path')->get();
-        return response()->json($images);
-    }
     /**
      * Remove the specified resource from storage.
      */
