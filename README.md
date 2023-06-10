@@ -34,9 +34,9 @@ run : php artisan serve
  
 After following these commands, you will get Admin User with following credentials:- 
  
-##Email : admin@topntech.com
+## Email : admin@topntech.com
 
-##Password : root1234
+## Password : root1234
 
 Best of luck !!    
 ## Features :-
