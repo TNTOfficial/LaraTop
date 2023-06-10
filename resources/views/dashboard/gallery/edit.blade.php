@@ -25,11 +25,17 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
+                                        <label>Name</label>
+                                        <input class="form-control" name="name" id="name" type="text" value="{{ $item->name }}">
+                                        @error('name')
+                                        <div class="invalid-tooltip">Please enter name of the gallery.</div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
                                         @if($item->image)
                                         <img id="preview-image" src="{{ asset('storage/gallery/' . $item->image) }}" alt="preview image" style="max-height: 250px;">
                                         @endif
-                                        <div>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <input type="hidden" id="croppedImage" name="croppedImage" />
