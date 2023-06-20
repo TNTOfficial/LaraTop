@@ -68,7 +68,10 @@ class SponsorController extends Controller
             $creationData["order"] = $lastRecord->order + 1;
         }
         Sponsor::create($creationData);
-        return redirect()->route('sponsors.index');
+        return response()->json([
+            'result' => 'success',
+            'message' => 'Sponsor has been created successfully',
+        ]);
     }
 
     /**
@@ -117,7 +120,10 @@ class SponsorController extends Controller
 
             $item->update($updateData);
         }
-        return redirect()->route('sponsors.index');
+        return response()->json([
+            'result' => 'success',
+            'message' => 'Sponsor has been updated successfully',
+        ]);
     }
 
     /**

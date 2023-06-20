@@ -43,7 +43,7 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="pb-2 fw-medium">Upload Sponsor File</label>
-                                        <input class="form-control" name="image" id="image-file" type="file" aria-label="file example" required="">
+                                        <input class="form-control" name="image" id="image-file" type="file" aria-label="file example" >
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-2">
@@ -55,7 +55,7 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="switch">
-                                            <input type="checkbox" name="status" {{ $item->status == 1 ? 'checked' : '' }}><span class="switch-state"></span>
+                                            <input type="checkbox" id="status" name="status" {{ $item->status == 1 ? 'checked' : '' }}><span class="switch-state"></span>
                                         </label>
                                     </div>
                                 </div>
@@ -86,6 +86,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
 @stack('scripts')
 <script>
+    var redirectURL = "{{route('sponsors.index')}}";
     $(document).ready(function() {
         $("#editSponsorForm").validate({
             rules: {
@@ -93,10 +94,29 @@
                     required: true,
                     minlength: 10,
                     maxlength: 50,
-                },
-                image: {
-                    required: true
                 }
+            },
+            submitHandler: function(form) {
+                var formData = {
+                    _token: "{{ csrf_token() }}",
+                    name: $("#name").val(),
+                    status: $("#status").val(),
+                    croppedImage: $("#croppedImage").val(),
+                };
+
+                $.ajax({
+                    type: "PUT",
+                    url: "{{ route('sponsors.update', $item->id) }}",
+                    data: formData,
+                    dataType: "json",
+                    encode: true,
+                }).done(function(data) {
+                    if (data.result == 'success') {
+                        window.location = redirectURL;
+                    }
+                });
+
+                event.preventDefault();
             }
         });
     });

@@ -66,7 +66,10 @@ class TestimonialController extends Controller
             $creationData["order"] = $lastRecord->order + 1;
         }
         Testimonial::create($creationData);
-        return redirect()->route('testimonials.index');
+        return response()->json([
+            'result' => 'success',
+            'message' => 'Testimonial has been created successfully',
+        ]);
     }
 
 
@@ -117,7 +120,10 @@ class TestimonialController extends Controller
 
             $item->update($updateData);
         }
-        return redirect()->route('testimonials.index');
+        return response()->json([
+            'result' => 'success',
+            'message' => 'Testimonial has been updated successfully',
+        ]);
     }
 
     /**

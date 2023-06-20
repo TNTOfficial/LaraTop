@@ -40,9 +40,9 @@
                                             <i class="fa-solid fa-user fs-4 pe-2 mt-1"></i></a></li>
                                     @endcan
                                     <li class="edit">
-                                        <a href="{{ route('users.roles', $user->id)}}">
-                                            <i class="fa-solid fa-eye fs-4 pe-2 mt-1"></i>
-                                        </a>
+                                        <link href="{{ route('users.roles', $user->id)}}">
+                                        <i class="fa-solid fa-eye fs-4 pe-2 mt-1"></i>
+                                        </Link>
                                     </li>
                                     @can('User delete')
                                     <form action="{{route('users.delete', $user->id)}}" onsubmit="confirmDelete(e)" method="POST">

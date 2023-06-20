@@ -76,7 +76,7 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="switch">
-                                            <input type="checkbox" name="status" checked=""><span class="switch-state"></span>
+                                            <input type="checkbox" id="status" name="status" checked=""><span class="switch-state"></span>
                                         </label>
                                     </div>
                                 </div>
@@ -124,6 +124,31 @@
                 event_date: {
                     required: true
                 }
+            },
+            submitHandler: function(form) {
+                var formData = {
+                    _token: "{{ csrf_token() }}",
+                    title: $("#title").val(),
+                    sub_title: $("#sub_title").val(),
+                    description: $("#description").val(),
+                    event_date: $('#event_date').val(),
+                    status: $("#status").val(),
+                    croppedImage: $("#croppedImage").val(),
+                };
+
+                $.ajax({
+                    type: "PUT",
+                    url: "{{ route('futureEvents.update', $item->id) }}",
+                    data: formData,
+                    dataType: "json",
+                    encode: true,
+                }).done(function(data) {
+                    if (data.result == 'success') {
+                        window.location = redirectURL;
+                    }
+                });
+
+                event.preventDefault();
             }
         });
     });

@@ -61,7 +61,7 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="switch">
-                                            <input type="checkbox" name="status" checked=""><span class="switch-state"></span>
+                                            <input type="checkbox" id="status" name="status" checked=""><span class="switch-state"></span>
                                         </label>
                                     </div>
                                 </div>
@@ -93,6 +93,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
 @stack('scripts')
 <script>
+    var redirectURL = "{{route('slides.index')}}";
     $(document).ready(function() {
         $("#slideForm").validate({
             rules: {
@@ -104,6 +105,29 @@
                 sub_title: {
                     required: true
                 }
+            },
+            submitHandler: function(form) {
+                var formData = {
+                    _token: "{{ csrf_token() }}",
+                    title: $("#title").val(),
+                    sub_title: $("#sub_title").val(),
+                    status: $("#status").val(),
+                    croppedImage: $("#croppedImage").val(),
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('slides.store') }}",
+                    data: formData,
+                    dataType: "json",
+                    encode: true,
+                }).done(function(data) {
+                    if (data.result == 'success') {
+                        window.location = redirectURL;
+                    }
+                });
+
+                event.preventDefault();
             }
         });
     });

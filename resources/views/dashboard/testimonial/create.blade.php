@@ -66,7 +66,7 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="switch">
-                                            <input type="checkbox" name="status" checked=""><span class="switch-state"></span>
+                                            <input type="checkbox" id="status" name="status" checked=""><span class="switch-state"></span>
                                         </label>
                                     </div>
                                 </div>
@@ -97,6 +97,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
 @stack('scripts')
 <script>
+    var redirectURL = "{{route('testimonials.index')}}";
     $(document).ready(function() {
         $("#testForm").validate({
             rules: {
@@ -111,6 +112,30 @@
                     required: true,
                     minlength: 20,
                 }
+            },
+            submitHandler: function(form) {
+                var formData = {
+                    _token: "{{ csrf_token() }}",
+                    name: $("#name").val(),
+                    designation: $("#designation").val(),
+                    message: $("#message").val(),
+                    status: $("#status").val(),
+                    croppedImage: $("#croppedImage").val(),
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('testimonials.store') }}",
+                    data: formData,
+                    dataType: "json",
+                    encode: true,
+                }).done(function(data) {
+                    if (data.result == 'success') {
+                        window.location = redirectURL;
+                    }
+                });
+
+                event.preventDefault();
             }
         });
     });
