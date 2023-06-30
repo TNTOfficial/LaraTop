@@ -71,7 +71,10 @@ class SliderController extends Controller
             $creationData["order"] = $lastRecord->order + 1;
         }
         Slider::create($creationData);
-        return redirect()->route('slides.index');
+        return response()->json([
+            'result' => 'success',
+            'message' => 'Slide has been created successfully',
+        ]);
     }
 
     /**
@@ -120,7 +123,10 @@ class SliderController extends Controller
 
             $item->update($updateData);
         }
-        return redirect()->route('slides.index');
+        return response()->json([
+            'result' => 'success',
+            'message' => 'Slide has been Updated successfully',
+        ]);
     }
 
     /**

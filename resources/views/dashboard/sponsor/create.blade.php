@@ -53,7 +53,7 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="switch">
-                                            <input type="checkbox" name="status" checked=""><span class="switch-state"></span>
+                                            <input type="checkbox" id="status" name="status" checked=""><span class="switch-state"></span>
                                         </label>
                                     </div>
                                 </div>
@@ -83,6 +83,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
 @stack('scripts')
 <script>
+    var redirectURL = "{{route('sponsors.index')}}";
     $(document).ready(function() {
         $("#sponsorForm").validate({
             rules: {
@@ -91,6 +92,28 @@
                     minlength: 2,
                     maxlength: 50,
                 }
+            },
+            submitHandler: function(form) {
+                var formData = {
+                    _token: "{{ csrf_token() }}",
+                    name: $("#name").val(),
+                    status: $("#status").val(),
+                    croppedImage: $("#croppedImage").val(),
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('sponsors.store') }}",
+                    data: formData,
+                    dataType: "json",
+                    encode: true,
+                }).done(function(data) {
+                    if (data.result == 'success') {
+                        window.location = redirectURL;
+                    }
+                });
+
+                event.preventDefault();
             }
         });
     });

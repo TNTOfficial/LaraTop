@@ -57,7 +57,10 @@ class FutureEventController extends Controller
             $creationData["order"] = $lastRecord->order + 1;
         }
         FutureEvent::create($creationData);
-        return redirect()->route('futureEvents.index');
+        return response()->json([
+            'result' => 'success',
+            'message' => 'Event has been created successfully',
+        ]);
     }
 
     /**
@@ -109,7 +112,10 @@ class FutureEventController extends Controller
 
             $item->update($updateData);
         }
-        return redirect()->route('futureEvents.index');
+        return response()->json([
+            'result' => 'success',
+            'message' => 'Event has been updated successfully',
+        ]);
     }
 
     /**

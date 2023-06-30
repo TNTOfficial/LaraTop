@@ -56,7 +56,7 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label>Upload Testimonial file</label>
-                                        <input class="form-control" name="image" id="image-file" type="file" aria-label="file example" required="">
+                                        <input class="form-control" name="image" id="image-file" type="file" aria-label="file example">
 
                                     </div>
                                     <div class="col-md-12 mb-2">
@@ -70,7 +70,7 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="switch">
-                                            <input type="checkbox" name="status" {{ $item->status == 1 ? 'checked' : '' }}><span class="switch-state"></span>
+                                            <input type="checkbox" id="status" name="status" {{ $item->status == 1 ? 'checked' : '' }}><span class="switch-state"></span>
                                         </label>
                                     </div>
                                 </div>
@@ -92,13 +92,14 @@
         </div>
     </div>
 </div>
-@include('components.cropper', ['imageId' => 'image'])
+@include('components.cropper', ['imageId' => 'image','aspect_ratio' => '1/2'] )
 @endsection
 
 @section('script')
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
 @stack('scripts')
 <script>
+    var redirectURL = "{{route('testimonials.index')}}";
     $(document).ready(function() {
         $("#editTestForm").validate({
             rules: {
@@ -113,6 +114,30 @@
                     required: true,
                     minlength: 20,
                 }
+            },
+            submitHandler: function(form) {
+                var formData = {
+                    _token: "{{ csrf_token() }}",
+                    name: $("#name").val(),
+                    designation: $("#designation").val(),
+                    message: $("#message").val(),
+                    status: $("#status").val(),
+                    croppedImage: $("#croppedImage").val(),
+                };
+
+                $.ajax({
+                    type: "PUT",
+                    url: "{{ route('testimonials.update', $item->id) }}",
+                    data: formData,
+                    dataType: "json",
+                    encode: true,
+                }).done(function(data) {
+                    if (data.result == 'success') {
+                        window.location = redirectURL;
+                    }
+                });
+
+                event.preventDefault();
             }
         });
     });
