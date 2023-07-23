@@ -28,4 +28,9 @@ class UserProfile extends Model
     {
         return $this->image;
     }
+
+    public function getProfilePhotoUrlAttribute()
+    {
+        return asset($this->attributes['image']);
+    }
 }
