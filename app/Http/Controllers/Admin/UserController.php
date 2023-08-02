@@ -64,7 +64,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($request->input('user_id'));
         $selectedRoles = $request->input('roles') ?? [];
-
         $existingRoles = $user->roles->pluck('id')->toArray();
 
         $rolesToRemove = array_diff($existingRoles, $selectedRoles);

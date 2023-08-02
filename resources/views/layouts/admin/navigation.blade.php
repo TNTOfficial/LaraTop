@@ -1,6 +1,5 @@
-
 @php
-    $userProfile = Auth::user()->userProfile;
+$userProfile = Auth::user()->userProfile;
 @endphp
 
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -19,7 +18,12 @@
             <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="nav-profile-img">
-                        <img src="{{asset('assets/images/faces/face1.jpg')}}" alt="image">
+                        @if ($profileImage)
+                        <img src="{{ asset('/storage/images/' . $profileImage) }}" alt="Profile Image">
+                        @else
+                        <!-- Display a default image if the profile image is not available -->
+                        <img src="{{asset('assets/images/faces/face1.jpg')}}" alt="Default Image">
+                        @endif
                         <span class="availability-status online"></span>
                     </div>
                     <div class="nav-profile-text">
